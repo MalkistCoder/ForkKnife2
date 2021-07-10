@@ -40,3 +40,12 @@ class Levels(commands.Cog):
 
         await ctx.send(embed=embed)
     
+    @commands.Cog.listener('on_message')
+    async def update_level(self,message):
+        with open('levels.json','r') as f:
+            levels = json.load(f)
+        levels['dudes'][str(message.author.id)]['exp'] += (len(message.clean_content)//2)
+
+def setup(bot):
+    bot.add_cog(Levels(bot))
+    
