@@ -36,5 +36,7 @@ class Levels(commands.Cog):
         percent_done = round((exp/needed_exp)*100,1)
 
         embed.add_field(name='Level',value=str(level))
-        embed.add_field(name='EXP', value=str(exp)+str(needed_exp))
+        embed.add_field(name='EXP', value=str(exp)+'/'+str(needed_exp)+' ['+str(percent_done)+']')
+
+        await ctx.send(embed=embed)
     
